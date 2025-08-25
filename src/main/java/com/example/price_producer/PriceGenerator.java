@@ -14,7 +14,7 @@ import java.util.Random;
 public class PriceGenerator {
 
     private static final String TOPIC_NAME = "prices-topic";
-    private KafkaTemplate<String, PriceUpdate> kafkaTemplate;
+    private final KafkaTemplate<String, PriceUpdate> kafkaTemplate;
     private static final Logger log = LoggerFactory.getLogger(PriceGenerator.class);
     private final Random random = new Random();
 
