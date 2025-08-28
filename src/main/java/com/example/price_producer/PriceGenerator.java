@@ -15,7 +15,7 @@ public class PriceGenerator {
 
     private static final String TOPIC_NAME = "prices-topic";
     private final KafkaTemplate<String, PriceUpdate> kafkaTemplate;
-    private static final Logger log = LoggerFactory.getLogger(PriceGenerator.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PriceGenerator.class);
     private final Random random = new Random();
 
     @Autowired
@@ -28,7 +28,7 @@ public class PriceGenerator {
         double randomPrice = 10.0 + (90 * random.nextDouble());
 //      String message = String.format("{\"suppliedPrice\": %s}", randomPrice);
         PriceUpdate newGeneratedPrice = new PriceUpdate(randomPrice);
-        log.info("Сгенерирована новая цена и отправлена в Kafka: {}", newGeneratedPrice.toString());
+        LOG.info("Сгенерирована новая цена и отправлена в Kafka: {}", newGeneratedPrice.toString());
         kafkaTemplate.send(TOPIC_NAME, newGeneratedPrice);
     }
 }
